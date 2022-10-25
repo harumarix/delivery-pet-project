@@ -1,0 +1,48 @@
+{
+  "meals": {
+    "m1": {
+      "name": {
+        "ru": "Суши",
+        "en": "Sushi"
+      },
+      "description": {
+        "ru": "Свежая рыба и овощи",
+        "en": "Finest fish and veggies"
+      },
+      "price": 22.99
+    },
+    "m2": {
+      "name": {
+        "ru": "Шницель",
+        "en": "Schnitzel"
+      },
+      "description": {
+        "ru": "Немецкое блюдо",
+        "en": "A german specialty!"
+      },
+      "price": 16.5
+    },
+    "m3": {
+      "name": {
+        "ru": "Барбекю бургер",
+        "en": "Barbecue Burger"
+      },
+      "description": {
+        "ru": "Американский, мясной",
+        "en": "American, raw, meaty"
+      },
+      "price": 12.99
+    },
+    "m4": {
+      "name": {
+        "ru": "Зеленый боул",
+        "en": "Green Bowl"
+      },
+      "description": {
+        "ru": "Полезный... зеленый...",
+        "en": "Healthy...and green..."
+      },
+      "price": 18.99
+    }
+  }
+}

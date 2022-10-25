@@ -1,0 +1,30 @@
+.notification {
+  position: fixed;
+  z-index: 400;
+  width: 400px;
+  height: 60px;
+  opacity: 0.8;
+  border-radius: 10px 0 0 10px;
+  top: 120px;
+  right: 0;
+  background-color: #1a8ed1;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  color: white;
+}
+
+.notification h2,
+.notification p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.error {
+  background-color: #690000;
+}
+
+.success {
+  background-color: #1ad1b9;
+}
