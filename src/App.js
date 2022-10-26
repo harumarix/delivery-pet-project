@@ -8,6 +8,7 @@ import Meals from "./components/Pages/Meals";
 import Cart from "./components/Cart/Cart";
 import Notification from "./components/UI/Notification";
 import Orders from "./components/Pages/Orders";
+import OrderDetail from "./components/Pages/OrderDetail";
 
 let isInitial = true;
 
@@ -57,6 +58,9 @@ function App() {
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onCartBtnClick={showCartHandler} />
       <Switch>
+        <Route path="/orders/:orderId">
+          <OrderDetail />
+        </Route>
         <Route path="/orders">
           <Orders />
         </Route>

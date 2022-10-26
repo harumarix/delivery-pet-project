@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import classes from "./OrderItem.module.scss";
 
 const OrderItem = (props) => {
@@ -28,6 +29,7 @@ const OrderItem = (props) => {
         </div>
       ))}
       <div>Totala amount: {props.totalAmount}$</div>
+      <Link to={`/orders/${props.id}`}>Details</Link>
     </li>
   );
 };
