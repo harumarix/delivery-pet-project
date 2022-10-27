@@ -8,6 +8,9 @@ const ordersSlice = createSlice({
     replaceOrders(state, action) {
       state.ordersData = action.payload;
     },
+    // changeSorting(state) {
+    //   console.log(typeof state.ordersData);
+    // },
   },
 });
 
