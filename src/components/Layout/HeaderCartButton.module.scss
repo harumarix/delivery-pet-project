@@ -1,3 +1,5 @@
+@import "../../asssets/mixins.scss";
+
 .button {
   cursor: pointer;
   font: inherit;
@@ -55,5 +57,28 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@include for-tablet-landscape-down {
+  .button {
+    padding: 0;
+    background-color: transparent;
+    padding: 5px;
+  }
+
+  .badge {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .button:hover .badge,
+  .button:active .badge {
+    background-color: transparent;
+  }
+
+  .button:hover,
+  .button:active {
+    background-color: transparent;
   }
 }
