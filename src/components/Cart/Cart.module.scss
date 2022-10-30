@@ -1,3 +1,5 @@
+@import "../../asssets/mixins.scss";
+
 .cart-items {
   list-style: none;
   margin: 0;
@@ -34,6 +36,7 @@
   padding: 0.5rem 2rem;
   border-radius: 25px;
   margin-left: 1rem;
+  margin-top: 30px;
 }
 
 .actions button:hover,
@@ -51,4 +54,15 @@
 .actions .button {
   background-color: #8a2b06;
   color: white;
+}
+
+@include for-tablet-portrait-down {
+  .actions {
+    flex-direction: column;
+  }
+
+  .mainButtonsWrap {
+    display: flex;
+    justify-content: space-between;
+  }
 }
