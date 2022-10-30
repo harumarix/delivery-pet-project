@@ -21,16 +21,15 @@ const OrderDetail = () => {
         {t.back_button}
       </button>
       <Card>
-        <div>{orderDetail?.user.Name}</div>
+        <div>{orderDetail?.user.name}</div>
         <div>{orderDetail?.user.city}</div>
-        <div>{orderDetail?.user.Street}</div>
-        <div>{orderDetail?.user.city}</div>
+        <div>{orderDetail?.user.street}</div>
         {orderDetail?.orderedItems.map((item) => (
-          <React.Fragment>
+          <div key={item.id}>
             <div>{item.name[lang]}</div>
             <div>{item.amount[lang]}</div>
             <div>{item.price}</div>
-          </React.Fragment>
+          </div>
         ))}
       </Card>
     </section>
