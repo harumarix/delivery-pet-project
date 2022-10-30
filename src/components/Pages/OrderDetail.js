@@ -21,16 +21,31 @@ const OrderDetail = () => {
         {t.back_button}
       </button>
       <Card>
-        <div>{orderDetail?.user.name}</div>
-        <div>{orderDetail?.user.city}</div>
-        <div>{orderDetail?.user.street}</div>
-        {orderDetail?.orderedItems.map((item) => (
-          <div key={item.id}>
-            <div>{item.name[lang]}</div>
-            <div>{item.amount[lang]}</div>
-            <div>{item.price}</div>
-          </div>
-        ))}
+        <div className={classes.orderDetailWrap}>
+          <h3>User info</h3>
+          <div>{orderDetail?.user.name}</div>
+          <div>{orderDetail?.user.city}</div>
+          <div>{orderDetail?.user.street}</div>
+
+          <table className={classes.orderDetailTable}>
+            <thead>
+              <tr>
+                <th>Meal</th>
+                <th>Price</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orderDetail?.orderedItems.map((order) => (
+                <tr key={order.id}>
+                  <td>{order.name[lang]}</td>
+                  <td>{order.price}$</td>
+                  <td>{order.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </Card>
     </section>
   );

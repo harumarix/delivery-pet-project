@@ -1,9 +1,9 @@
 .order {
-  // display: flex;
-  // justify-content: space-between;
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 .order h3 {
@@ -11,21 +11,27 @@
   font-weight: bold;
   color: #ad5502;
   font-size: 1.25rem;
-}
-.orderInfo {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.itemWrapper {
-  margin-bottom: 20px;
+.orderItemTable {
+  margin-bottom: 15px;
 }
 
-.orderDetailLink {
+.orderItemTable th,
+td {
+  width: 100px;
+  background-color: #ad550214;
+}
+
+.orderItemTotal {
+  margin-bottom: 15px;
+}
+
+.orderDetailBtn {
   color: #fff;
   padding: 5px;
   background-color: #ad5502;
   border-radius: 4px;
+  width: fit-content;
 }

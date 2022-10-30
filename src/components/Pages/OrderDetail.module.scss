@@ -3,25 +3,53 @@
   width: 90%;
   margin: 2rem auto;
   animation: orders-appear 1s ease-out forwards;
-  position: relative;
-  margin-top: -130px;
+  margin-top: -200px;
+}
+
+.order h3 {
+  margin: 0 0 0.25rem 0;
+  font-weight: bold;
+  color: #ad5502;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+@keyframes orders-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .backButton {
   font: inherit;
   cursor: pointer;
-  background-color: #fff;
+  background-color: transparent;
   border: 1px solid #8a2b06;
   padding: 0.5rem 2rem;
   border-radius: 4px;
   margin-left: 1rem;
-  position: absolute;
-  top: -60px;
-  color: #8a2b06;
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
 .backButton:hover {
-  background-color: #5a1a01;
+  background-color: rgba(90, 26, 1, 0.5);
   border: 1px solid #5a1a01;
   color: #fff;
+}
+
+.orderDetailWrap {
+  display: flex;
+  flex-direction: column;
+}
+.orderDetailTable th,
+td {
+  width: 100px;
+  background-color: #ad550214;
+  text-align: start;
 }

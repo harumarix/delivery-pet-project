@@ -53,13 +53,10 @@ const Orders = () => {
 
   return (
     <section className={classes.orders}>
+      <button className={classes.sorting_button} onClick={changeSortingHandler}>
+        {t.sort} {`${isSortingAscending ? t.descending : t.ascending}`}
+      </button>
       <Card>
-        <h1>{t.order_history}</h1>
-        <div className={classes.sorting}>
-          <button onClick={changeSortingHandler}>
-            {t.sort} {`${isSortingAscending ? t.descending : t.ascending}`}
-          </button>
-        </div>
         <ul>{ordersList}</ul>
       </Card>
     </section>

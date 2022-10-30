@@ -33,23 +33,20 @@
   }
 }
 
-.sorting {
-  padding-bottom: 1rem;
-  border-bottom: 3px solid #8a2b06;
+.sorting_button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+  color: #fff;
   margin-bottom: 2rem;
 }
 
-.sorting button {
-  font: inherit;
-  color: #8a2b06;
-  border: 1px solid #8a2b06;
-  background-color: transparent;
-  border-radius: 4px;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-}
-
-.sorting button:hover {
-  background-color: #8a2b06;
+.sorting_button:hover {
+  background-color: rgba(90, 26, 1, 0.5);
+  border: 1px solid #5a1a01;
   color: #fff;
 }

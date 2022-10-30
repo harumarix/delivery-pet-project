@@ -19,22 +19,29 @@ const OrderItem = (props) => {
 
   return (
     <li className={classes.order}>
-      <div className={classes.itemWrapper}>
-        <div>
-          <h3>{props.userName}</h3>
-        </div>
-        {orders.map((order) => (
-          <div className={classes.orderInfo} key={order.id}>
-            <div>
-              {order.name[lang]} {order.price}$ x{order.amount}
-            </div>
-          </div>
-        ))}
-        <div>
-          {t.total_amount}: {props.totalAmount}$
-        </div>
+      <h3>{props.userName}</h3>
+      <table className={classes.orderItemTable}>
+        <thead>
+          <tr>
+            <th>Meal</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order) => (
+            <tr key={order.id}>
+              <td>{order.name[lang]}</td>
+              <td>{order.price}$</td>
+              <td>{order.amount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className={classes.orderItemTotal}>
+        {t.total_amount}: {props.totalAmount}$
       </div>
-      <Link className={classes.orderDetailLink} to={`/orders/${props.id}`}>
+      <Link className={classes.orderDetailBtn} to={`/orders/${props.id}`}>
         {t.details_button}
       </Link>
     </li>
