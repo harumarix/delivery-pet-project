@@ -77,14 +77,16 @@ const Cart = (props) => {
           {t.cart_clear}
         </button>
       )}
-      <button className={classes["button--alt"]} onClick={props.onClose}>
-        {t.cart_close}
-      </button>
-      {hasItems && (
-        <button onClick={orderHandler} className={classes.button}>
-          {t.cart_order}
+      <div className={classes.mainButtonsWrap}>
+        <button className={classes["button--alt"]} onClick={props.onClose}>
+          {t.cart_close}
         </button>
-      )}
+        {hasItems && (
+          <button onClick={orderHandler} className={classes.button}>
+            {t.cart_order}
+          </button>
+        )}
+      </div>
     </div>
   );
 

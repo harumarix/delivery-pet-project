@@ -5,21 +5,36 @@ import HeaderCartButton from "./HeaderCartButton";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
 import { useDispatch, useSelector } from "react-redux";
 import { i18nActions } from "../../store/i18n-slice";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Header = (props) => {
   const lang = useSelector((state) => state.i18n.lang);
   const t = useSelector((state) => state.i18n.selectedTranslation);
+  const history = useHistory();
   const dispatch = useDispatch();
   const refBurger = useRef(null);
   const [burgerClicked, setBurgerClicked] = useState(false);
-  const cahngeLangHandler = (lang) => {
+
+  const changeLangHandler = (lang) => {
     const newLang = lang.target.id.replace("changeTo_", "");
     dispatch(i18nActions.setLang(newLang));
   };
 
   const burgerClickedHandler = () => {
     setBurgerClicked(!burgerClicked);
+  };
+
+  const burgerClickedAndNavigateHandler = () => {
+    setBurgerClicked(!burgerClicked);
+    history.push("/orders");
+  };
+
+  const changeBurgerLanguageHandler = (event) => {
+    const langId = event.target.firstChild.id
+      ? event.target.firstChild.id
+      : event.target.id;
+    const newLang = langId.replace("changeTo_", "");
+    dispatch(i18nActions.setLang(newLang));
   };
 
   useEffect(() => {
@@ -39,7 +54,7 @@ const Header = (props) => {
       {lang === "en" && (
         <div
           className={classes.flag}
-          onClick={cahngeLangHandler}
+          onClick={changeLangHandler}
           id="changeTo_ru"
         >
           {getUnicodeFlagIcon("RUS")}
@@ -48,7 +63,7 @@ const Header = (props) => {
       {lang == "ru" && (
         <div
           className={classes.flag}
-          onClick={cahngeLangHandler}
+          onClick={changeLangHandler}
           id="changeTo_en"
         >
           {getUnicodeFlagIcon("US")}
@@ -67,19 +82,21 @@ const Header = (props) => {
         ≡
       </button>
       <ul className={burgerWrapperClasses}>
-        <li className={classes.burgerItem}>
-          <HeaderCartButton onCartClick={props.onCartBtnClick} />
+        <li onClick={props.onCartBtnClick} className={classes.burgerItem}>
+          {t.cart_button}
         </li>
-        <li className={classes.burgerItem}>
-          <Link
-            onClick={burgerClickedHandler}
-            to="/orders"
-            className={classes.history}
-          >
-            {t.order_history}
-          </Link>
+        <li
+          onClick={burgerClickedAndNavigateHandler}
+          className={classes.burgerItem}
+        >
+          {t.order_history}
         </li>
-        <li className={classes.burgerItem}>{languageButton}</li>
+        <li
+          onClick={changeBurgerLanguageHandler}
+          className={classes.burgerItem}
+        >
+          {languageButton}
+        </li>
       </ul>
     </div>
   );

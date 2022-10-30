@@ -78,12 +78,12 @@
     top: 5rem;
     right: 0;
     border-radius: 0 0 10px 10px;
-    width: 300px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    list-style-type: none;
+    width: 30%;
     margin: 0;
     padding: 0;
     margin-right: 10%;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
   }
 
   .wrapper-burger-active {
@@ -102,6 +102,7 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     font-size: 1.25rem;
   }
+
   .burger:hover {
     opacity: 1;
   }
@@ -114,6 +115,8 @@
     display: flex;
     align-items: center;
     justify-content: right;
+    cursor: pointer;
+    text-align: end;
   }
 
   .burgerItem * {
