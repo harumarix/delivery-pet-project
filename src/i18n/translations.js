@@ -27,6 +27,11 @@ export const translations = {
     form_cancel: "Cancel",
     back_button: "Back",
     total_amount: "Totala amount",
+    details_button: "Details",
+    order_history: "Order history",
+    sort: "Sort",
+    ascending: "Ascending",
+    descending: "Descending",
   },
 
   ru: {
@@ -55,5 +60,10 @@ export const translations = {
     form_cancel: "Отменить",
     back_button: "Назад",
     total_amount: "Итого",
+    details_button: "Подробнее",
+    order_history: "История заказов",
+    sort: "Расположить",
+    ascending: "по возрастанию",
+    descending: "по убыванию",
   },
 };

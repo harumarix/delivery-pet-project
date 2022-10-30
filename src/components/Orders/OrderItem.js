@@ -30,11 +30,12 @@ const OrderItem = (props) => {
             </div>
           </div>
         ))}
-        <div>{t.total_amount} {props.totalAmount}$</div>
+        <div>
+          {t.total_amount}: {props.totalAmount}$
+        </div>
       </div>
-
       <Link className={classes.orderDetailLink} to={`/orders/${props.id}`}>
-        Details
+        {t.details_button}
       </Link>
     </li>
   );

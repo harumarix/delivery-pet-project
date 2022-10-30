@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrderData } from "../../store/orders-actions";
 import OrderItem from "../Orders/OrderItem";
@@ -10,6 +10,7 @@ const Orders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const t = useSelector((state) => state.i18n.selectedTranslation);
   const queryParams = new URLSearchParams(location.search);
   const isSortingAscending = queryParams.get("sort") === "asc";
   const ordersData = useSelector((state) => state.orders.ordersData);
@@ -53,10 +54,10 @@ const Orders = () => {
   return (
     <section className={classes.orders}>
       <Card>
-        <h1>Order history</h1>
+        <h1>{t.order_history}</h1>
         <div className={classes.sorting}>
           <button onClick={changeSortingHandler}>
-            Sort {`${isSortingAscending ? "Descending" : "Ascending"}`}
+            {t.sort} {`${isSortingAscending ? t.descending : t.ascending}`}
           </button>
         </div>
         <ul>{ordersList}</ul>
