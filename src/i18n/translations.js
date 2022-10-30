@@ -25,6 +25,8 @@ export const translations = {
     form_city_validation: "Please enter a valid city!",
     form_confirm: "Confirm",
     form_cancel: "Cancel",
+    back_button: "Back",
+    total_amount: "Totala amount",
   },
 
   ru: {
@@ -51,5 +53,7 @@ export const translations = {
     form_city_validation: "Пожалуйста, введите корректное название города!",
     form_confirm: "Подтвердить",
     form_cancel: "Отменить",
+    back_button: "Назад",
+    total_amount: "Итого",
   },
 };

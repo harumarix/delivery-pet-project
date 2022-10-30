@@ -5,6 +5,7 @@ import classes from "./OrderItem.module.scss";
 const OrderItem = (props) => {
   const lang = useSelector((state) => state.i18n.lang);
   const orders = [];
+  const t = useSelector((state) => state.i18n.selectedTranslation);
   const { orderedItems } = props;
   for (const key in orderedItems) {
     orders.push({
@@ -18,18 +19,23 @@ const OrderItem = (props) => {
 
   return (
     <li className={classes.order}>
-      <div>
-        <h3>{props.userName}</h3>
-      </div>
-      {orders.map((order) => (
-        <div className={classes.orderInfo} key={order.id}>
-          <div>
-            {order.name[lang]} {order.price}$ x{order.amount}
-          </div>
+      <div className={classes.itemWrapper}>
+        <div>
+          <h3>{props.userName}</h3>
         </div>
-      ))}
-      <div>Totala amount: {props.totalAmount}$</div>
-      <Link to={`/orders/${props.id}`}>Details</Link>
+        {orders.map((order) => (
+          <div className={classes.orderInfo} key={order.id}>
+            <div>
+              {order.name[lang]} {order.price}$ x{order.amount}
+            </div>
+          </div>
+        ))}
+        <div>{t.total_amount} {props.totalAmount}$</div>
+      </div>
+
+      <Link className={classes.orderDetailLink} to={`/orders/${props.id}`}>
+        Details
+      </Link>
     </li>
   );
 };

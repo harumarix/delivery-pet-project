@@ -56,7 +56,7 @@ const Orders = () => {
         <h1>Order history</h1>
         <div className={classes.sorting}>
           <button onClick={changeSortingHandler}>
-            Sort {`${isSortingAscending ? "Descending" : "Ascending"}`}{" "}
+            Sort {`${isSortingAscending ? "Descending" : "Ascending"}`}
           </button>
         </div>
         <ul>{ordersList}</ul>

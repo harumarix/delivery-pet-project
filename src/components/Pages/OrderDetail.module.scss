@@ -2,6 +2,25 @@
   max-width: 60rem;
   width: 90%;
   margin: 2rem auto;
-
   animation: orders-appear 1s ease-out forwards;
+  position: relative;
+}
+
+.backButton {
+  font: inherit;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+  position: absolute;
+  top: -60px;
+  color: #8a2b06;
+}
+
+.backButton:hover {
+  background-color: #5a1a01;
+  border: 1px solid #5a1a01;
+  color: #fff;
 }
