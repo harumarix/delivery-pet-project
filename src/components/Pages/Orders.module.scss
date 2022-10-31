@@ -1,9 +1,5 @@
 .orders {
-  max-width: 60rem;
-  width: 90%;
-  margin: 2rem auto;
   margin-top: -200px;
-  animation: orders-appear 1s ease-out forwards;
 }
 .ordersLoading {
   text-align: center;
@@ -21,23 +17,11 @@
   padding: 0;
 }
 
-@keyframes orders-appear {
-  from {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .sorting_button {
   font: inherit;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #8a2b06;
+  border: 1px solid #3e241a;
   padding: 0.5rem 2rem;
   border-radius: 4px;
   margin-left: 1rem;

@@ -1,0 +1,17 @@
+.backButton {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.backButton:hover {
+  background-color: rgba(90, 26, 1, 0.5);
+  border: 1px solid #5a1a01;
+  color: #fff;
+}

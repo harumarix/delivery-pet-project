@@ -4,16 +4,20 @@ import { fetchOrderData } from "../../store/orders-actions";
 import OrderItem from "../Orders/OrderItem";
 import classes from "./Orders.module.scss";
 import Card from "../UI/Card";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { uiActions } from "../../store/ui-slice";
 
 const Orders = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const t = useSelector((state) => state.i18n.selectedTranslation);
   const queryParams = new URLSearchParams(location.search);
   const isSortingAscending = queryParams.get("sort") === "asc";
   const ordersData = useSelector((state) => state.orders.ordersData);
+  const status = useSelector((state) => state.ui.status);
+
+  console.log(status);
 
   const sortOrders = (array, ascending) => {
     if (!ascending) {
@@ -24,11 +28,14 @@ const Orders = () => {
   };
 
   const changeSortingHandler = () => {
-    history.push("/orders?sort=" + (isSortingAscending ? "desc" : "asc"));
+    navigate("/orders?sort=" + (isSortingAscending ? "desc" : "asc"));
   };
 
   useEffect(() => {
     dispatch(fetchOrderData());
+    return () => {
+      dispatch(uiActions.setStatus(null));
+    };
   }, [dispatch]);
 
   const loadedOrdersData = [];
@@ -52,7 +59,7 @@ const Orders = () => {
   ));
 
   return (
-    <section className={classes.orders}>
+    <section className={`sectionContent ${classes.orders}`}>
       <button className={classes.sorting_button} onClick={changeSortingHandler}>
         {t.sort} {`${isSortingAscending ? t.descending : t.ascending}`}
       </button>

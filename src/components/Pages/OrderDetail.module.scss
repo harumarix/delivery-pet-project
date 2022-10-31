@@ -1,28 +1,13 @@
-.order {
-  max-width: 60rem;
-  width: 90%;
-  margin: 2rem auto;
-  animation: orders-appear 1s ease-out forwards;
+.orderDetails {
   margin-top: -200px;
 }
 
-.order h3 {
+.orderDetails h3 {
   margin: 0 0 0.25rem 0;
   font-weight: bold;
   color: #ad5502;
   font-size: 1.25rem;
   margin-bottom: 15px;
-}
-
-@keyframes orders-appear {
-  from {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .backButton {

@@ -3,6 +3,8 @@ import { cartActions } from "./cart-slice";
 
 export const fetchCartData = () => {
   return async (dispatch) => {
+    dispatch(cartActions.setStatus("loading"));
+
     const fetchData = async () => {
       const response = await fetch(
         "https://delivery-e2a89-default-rtdb.firebaseio.com/cart.json"
@@ -16,6 +18,8 @@ export const fetchCartData = () => {
 
     try {
       const cartData = await fetchData();
+      dispatch(cartActions.setStatus("success"));
+
       dispatch(
         cartActions.replaceCart({
           items: cartData.items || [],
@@ -23,6 +27,8 @@ export const fetchCartData = () => {
         })
       );
     } catch (error) {
+      dispatch(cartActions.setStatus("error"));
+
       dispatch(
         uiActions.showNotification({
           status: "error",
@@ -39,6 +45,7 @@ export const fetchCartData = () => {
 
 export const sendCartData = (cart) => {
   return async (dispatch) => {
+    dispatch(cartActions.setStatus("loading"));
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -58,7 +65,6 @@ export const sendCartData = (cart) => {
           }),
         }
       );
-
       if (!response.ok) {
         throw new Error("Adding to cart failed.");
       }
@@ -66,6 +72,7 @@ export const sendCartData = (cart) => {
 
     try {
       await sendRequest();
+      dispatch(cartActions.setStatus("success"));
       dispatch(
         uiActions.showNotification({
           status: "success",
@@ -77,6 +84,8 @@ export const sendCartData = (cart) => {
         dispatch(uiActions.hideNotification());
       }, 1000);
     } catch (error) {
+      dispatch(cartActions.setStatus("error"));
+
       dispatch(
         uiActions.showNotification({
           status: "error",

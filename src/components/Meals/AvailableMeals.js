@@ -6,7 +6,7 @@ import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
-  const { isLoading, isSubmitted, error, sendRequest } = useHttp();
+  const { isLoading, error, sendRequest } = useHttp();
 
   const showMealsHandler = (responseData) => {
     const loadedMeals = [];

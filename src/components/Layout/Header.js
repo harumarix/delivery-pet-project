@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./Header.module.scss";
-import main_image from "../../asssets/coffee.png";
+import main_image from "../../asssets/images/coffee.png";
 import HeaderCartButton from "./HeaderCartButton";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
 import { useDispatch, useSelector } from "react-redux";
 import { i18nActions } from "../../store/i18n-slice";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const lang = useSelector((state) => state.i18n.lang);
   const t = useSelector((state) => state.i18n.selectedTranslation);
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const refBurger = useRef(null);
   const [burgerClicked, setBurgerClicked] = useState(false);
@@ -26,7 +26,7 @@ const Header = (props) => {
 
   const burgerClickedAndNavigateHandler = () => {
     setBurgerClicked(!burgerClicked);
-    history.push("/orders");
+    navigate("/orders");
   };
 
   const changeBurgerLanguageHandler = (event) => {
@@ -109,7 +109,10 @@ const Header = (props) => {
         </Link>
         {burgerContent}
         <div className={classes.wrapper}>
-          <Link to="/orders" className={classes.history}>
+          <Link to="/login" className={classes.page}>
+            Login
+          </Link>
+          <Link to="/orders" className={classes.page}>
             {t.order_history}
           </Link>
           <HeaderCartButton onCartClick={props.onCartBtnClick} />

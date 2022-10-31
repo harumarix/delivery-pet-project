@@ -1,4 +1,4 @@
-@import "../../asssets/mixins.scss";
+@import "../../asssets/styles/mixins.scss";
 
 .header {
   position: fixed;
@@ -47,7 +47,7 @@
   font-size: 30px;
 }
 
-.history {
+.page {
   cursor: pointer;
   margin-right: 20px;
   font-weight: bold;

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import BackButton from "../UI/BackButton";
 import Card from "../UI/Card";
 import classes from "./OrderDetail.module.scss";
 
@@ -10,16 +10,17 @@ const OrderDetail = () => {
   const orderDetail = ordersData[orderId];
   const lang = useSelector((state) => state.i18n.lang);
   const t = useSelector((state) => state.i18n.selectedTranslation);
-  const history = useHistory();
+  const navigate = useNavigate();
   const goBackHandler = () => {
-    history.push("/orders");
+    navigate("/orders");
   };
 
   return (
-    <section className={classes.order}>
-      <button onClick={goBackHandler} className={classes.backButton}>
+    <section className={`sectionContent ${classes.orderDetails}`}>
+      {/* <button onClick={goBackHandler} className={classes.backButton}>
         {t.back_button}
-      </button>
+      </button> */}
+      <BackButton />
       <Card>
         <div className={classes.orderDetailWrap}>
           <h3>User info</h3>

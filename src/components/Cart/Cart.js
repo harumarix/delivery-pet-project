@@ -10,6 +10,7 @@ import { cartActions } from "../../store/cart-slice";
 const Cart = (props) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
   const t = useSelector((state) => state.i18n.selectedTranslation);
   const [isCheckout, setIsCheckout] = useState(false);
   const {
@@ -30,7 +31,7 @@ const Cart = (props) => {
           totalAmount: cart.totalAmount,
         },
       },
-      (responseData) => {
+      () => {
         dispatch(cartActions.clearCart());
       }
     );

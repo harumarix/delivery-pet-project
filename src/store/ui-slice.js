@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { notification: null },
+  initialState: { notification: null, status: null },
   reducers: {
     showNotification(state, action) {
       state.notification = {
@@ -13,6 +13,10 @@ const uiSlice = createSlice({
     },
     hideNotification(state) {
       state.notification = null;
+    },
+    setStatus(state, action) {
+      state.status = action.payload;
+      //success, error, loading, null
     },
   },
 });

@@ -1,8 +1,11 @@
 import { cartActions } from "./cart-slice";
 import { ordersActions } from "./orders-slice";
+import { uiActions } from "./ui-slice";
 
 export const fetchOrderData = () => {
-  return async (dispath) => {
+  return async (dispatch) => {
+    dispatch(uiActions.setStatus("loading"));
+
     const fetchData = async () => {
       const response = await fetch(
         "https://delivery-e2a89-default-rtdb.firebaseio.com/orders.json"
@@ -10,27 +13,29 @@ export const fetchOrderData = () => {
       if (!response.ok) {
         throw new Error("Could not get data!");
       }
-      const data = await response.json();
-      return data;
+      return await response.json();
     };
 
     try {
-      const ordersData = await fetchData();
-      dispath(ordersActions.replaceOrders(ordersData || []));
+      const data = await fetchData();
+      dispatch(uiActions.setStatus("success"));
+      dispatch(ordersActions.replaceOrders(data || []));
     } catch (error) {
-      dispath(
+      dispatch(
         uiActions.showNotification({
           status: "error",
           title: "Error!",
           message: "Fetching data failed!",
         })
       );
+      dispatch(uiActions.setStatus("error"));
     }
   };
 };
 
 export const sendOrderData = (order, userData) => {
   return async (dispatch) => {
+    dispatch(uiActions.setStatus("loading"));
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -58,6 +63,8 @@ export const sendOrderData = (order, userData) => {
 
     try {
       await sendRequest();
+      dispatch(uiActions.setStatus("success"));
+
       dispatch(cartActions.clearCart());
       dispatch(
         uiActions.showNotification({
@@ -70,6 +77,7 @@ export const sendOrderData = (order, userData) => {
         dispatch(uiActions.hideNotification());
       }, 1000);
     } catch (error) {
+      dispatch(uiActions.setStatus("error"));
       dispatch(
         uiActions.showNotification({
           status: "error",
