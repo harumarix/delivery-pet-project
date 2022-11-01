@@ -17,8 +17,6 @@ const Orders = () => {
   const ordersData = useSelector((state) => state.orders.ordersData);
   const status = useSelector((state) => state.ui.status);
 
-  console.log(status);
-
   const sortOrders = (array, ascending) => {
     if (!ascending) {
       return array.reverse();
@@ -57,6 +55,22 @@ const Orders = () => {
       totalAmount={order.totalAmount}
     />
   ));
+
+  if (status === "error") {
+    return (
+      <section className={classes.ordersError}>
+        <p>Request failed!</p>
+      </section>
+    );
+  }
+
+  if (status === "loading") {
+    return (
+      <section className={classes.ordersLoading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
 
   return (
     <section className={`sectionContent ${classes.orders}`}>

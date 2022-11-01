@@ -21,13 +21,6 @@ export const fetchOrderData = () => {
       dispatch(uiActions.setStatus("success"));
       dispatch(ordersActions.replaceOrders(data || []));
     } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Fetching data failed!",
-        })
-      );
       dispatch(uiActions.setStatus("error"));
     }
   };
