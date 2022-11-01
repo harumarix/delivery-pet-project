@@ -43,7 +43,7 @@ export const translations = {
     main_description_p2: `Все наши блюда готовятся из отборных продуктов высшего качества. Привезем вас все вовремя`,
     meals_add: "Добавить",
     meals_amount: "Количество",
-    cart_total: "Количество",
+    cart_total: "Итого",
     cart_close: "Закрыть",
     cart_order: "Заказать",
     cart_clear: "Отчистить корзину",

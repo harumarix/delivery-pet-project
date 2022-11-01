@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BackButton from "../UI/BackButton";
 import Card from "../UI/Card";
 import classes from "./LoginPage.module.scss";
 
@@ -11,6 +12,7 @@ const LoginPage = () => {
 
   return (
     <section className={`sectionContent ${classes.login}`}>
+      <BackButton />
       <Card>
         <h1>{isLogin ? "Login" : "Sign Up"}</h1>
         <form>
