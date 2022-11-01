@@ -6,6 +6,7 @@ import Checkout from "./Checkout";
 import useHttp from "../../hooks/use-http";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
+import { fetchOrderData } from "../../store/orders-actions";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Cart = (props) => {
       },
       () => {
         dispatch(cartActions.clearCart());
+        dispatch(fetchOrderData());
       }
     );
   };

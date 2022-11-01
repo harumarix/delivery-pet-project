@@ -19,7 +19,6 @@ function App() {
   const cart = useSelector((state) => state.cart);
   const { totalAmount } = cart;
   const status = useSelector((state) => state.cart.status);
-  console.log("cart " + status);
 
   const showCartHandler = () => {
     setCartIsShown(true);
@@ -33,17 +32,14 @@ function App() {
     dispatch(fetchCartData());
     return () => {
       dispatch(cartActions.setStatus(null));
-      console.log("unmluning fetch");
     };
   }, [dispatch]);
 
   useEffect(() => {
     if (cart.changed) {
       dispatch(sendCartData(cart));
-
       return () => {
         dispatch(cartActions.setStatus(null));
-        console.log("unmounting send");
       };
     }
   }, [dispatch, totalAmount]);
