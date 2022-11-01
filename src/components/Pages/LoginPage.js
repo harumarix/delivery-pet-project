@@ -1,6 +1,5 @@
 import { useState } from "react";
-import BackButton from "../UI/BackButton";
-import Card from "../UI/Card";
+
 import classes from "./LoginPage.module.scss";
 
 const LoginPage = () => {
@@ -12,8 +11,7 @@ const LoginPage = () => {
 
   return (
     <section className={`sectionContent ${classes.login}`}>
-      <BackButton />
-      <Card>
+      <div className={classes.auth}>
         <h1>{isLogin ? "Login" : "Sign Up"}</h1>
         <form>
           <div className={classes.control}>
@@ -35,7 +33,7 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
-      </Card>
+      </div>
     </section>
   );
 };
