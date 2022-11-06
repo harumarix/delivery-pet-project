@@ -25,9 +25,9 @@ const Header = (props) => {
     setBurgerClicked(!burgerClicked);
   };
 
-  const burgerClickedAndNavigateHandler = () => {
+  const burgerClickedAndNavigateHandler = (endpoint) => {
     setBurgerClicked(!burgerClicked);
-    navigate("/orders");
+    navigate(endpoint);
   };
 
   const changeBurgerLanguageHandler = (event) => {
@@ -87,7 +87,7 @@ const Header = (props) => {
           {t.cart_button}
         </li>
         <li
-          onClick={burgerClickedAndNavigateHandler}
+          onClick={burgerClickedAndNavigateHandler.bind(null, "/orders")}
           className={classes.burgerItem}
         >
           {t.order_history}
@@ -98,6 +98,23 @@ const Header = (props) => {
         >
           {languageButton}
         </li>
+
+        {isLoggedIn && (
+          <li
+            onClick={burgerClickedAndNavigateHandler.bind(null, "/profile")}
+            className={classes.burgerItem}
+          >
+            Profile
+          </li>
+        )}
+        {!isLoggedIn && (
+          <li
+            onClick={burgerClickedAndNavigateHandler.bind(null, "/login")}
+            className={classes.burgerItem}
+          >
+            Login
+          </li>
+        )}
       </ul>
     </div>
   );
