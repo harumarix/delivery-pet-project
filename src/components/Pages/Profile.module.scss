@@ -1,8 +1,8 @@
-.login {
+.profile {
   margin-top: -200px;
 }
 
-.auth {
+.form {
   margin: 3rem auto;
   width: 95%;
   max-width: 25rem;
@@ -11,11 +11,6 @@
   box-shadow: 0 1px 18px 10px rgb(0 0 0 / 25%);
   padding: 1rem;
   text-align: center;
-}
-
-.auth h1 {
-  text-align: center;
-  color: white;
 }
 
 .control {
@@ -38,21 +33,19 @@
   text-align: left;
   padding: 0.25rem;
 }
-
 .control input:focus {
   outline: 0px !important;
   -webkit-appearance: none;
   box-shadow: none !important;
 }
 
-.actions {
+.action {
   margin-top: 1.5rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
-.actions button {
+.action button {
   cursor: pointer;
   font: inherit;
   color: white;
@@ -62,25 +55,7 @@
   padding: 0.5rem 2.5rem;
 }
 
-.actions button:hover {
+.action button:hover {
   background-color: #641e03;
   border-color: #641e03;
-}
-
-.actions .toggle {
-  margin-top: 1rem;
-  background-color: transparent;
-  color: #fff;
-  opacity: 0.4;
-  border: none;
-  padding: 0.15rem 1.5rem;
-}
-
-.actions .toggle:hover {
-  background-color: transparent;
-  opacity: 1;
-}
-
-.loadingParagraph {
-  color: #fff;
 }

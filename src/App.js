@@ -11,6 +11,7 @@ import Orders from "./components/Pages/Orders";
 import OrderDetail from "./components/Pages/OrderDetail";
 import LoginPage from "./components/Pages/LoginPage";
 import { cartActions } from "./store/cart-slice";
+import Profile from "./components/Pages/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +64,8 @@ function App() {
       <Routes>
         <Route path="/orders/:orderId" element={<OrderDetail />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/"
           element={
@@ -71,7 +74,6 @@ function App() {
             </main>
           }
         />
-        <Route path="/login" element={<LoginPage />} />
       </Routes>
       {showNotification}
     </React.Fragment>

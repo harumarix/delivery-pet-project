@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = (props) => {
   const lang = useSelector((state) => state.i18n.lang);
   const t = useSelector((state) => state.i18n.selectedTranslation);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const refBurger = useRef(null);
@@ -109,9 +110,16 @@ const Header = (props) => {
         </Link>
         {burgerContent}
         <div className={classes.wrapper}>
-          <Link to="/login" className={classes.page}>
-            Login
-          </Link>
+          {!isLoggedIn && (
+            <Link to="/login" className={classes.page}>
+              Login
+            </Link>
+          )}
+          {isLoggedIn && (
+            <Link to="/profile" className={classes.page}>
+              Profile
+            </Link>
+          )}
           <Link to="/orders" className={classes.page}>
             {t.order_history}
           </Link>
