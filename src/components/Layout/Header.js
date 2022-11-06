@@ -104,7 +104,7 @@ const Header = (props) => {
             onClick={burgerClickedAndNavigateHandler.bind(null, "/profile")}
             className={classes.burgerItem}
           >
-            Profile
+            {t.profile}
           </li>
         )}
         {!isLoggedIn && (
@@ -112,7 +112,7 @@ const Header = (props) => {
             onClick={burgerClickedAndNavigateHandler.bind(null, "/login")}
             className={classes.burgerItem}
           >
-            Login
+            {t.login}
           </li>
         )}
       </ul>
@@ -129,12 +129,12 @@ const Header = (props) => {
         <div className={classes.wrapper}>
           {!isLoggedIn && (
             <Link to="/login" className={classes.page}>
-              Login
+              {t.login}
             </Link>
           )}
           {isLoggedIn && (
             <Link to="/profile" className={classes.page}>
-              Profile
+              {t.profile}
             </Link>
           )}
           <Link to="/orders" className={classes.page}>

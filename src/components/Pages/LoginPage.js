@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
 
 import classes from "./LoginPage.module.scss";
 
 const LoginPage = () => {
+  const t = useSelector((state) => state.i18n.selectedTranslation);
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const dispatch = useDispatch();
@@ -65,14 +67,14 @@ const LoginPage = () => {
   return (
     <section className={`sectionContent ${classes.login}`}>
       <div className={classes.auth}>
-        <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+        <h1>{isLogin ? t.login : t.sign_up}</h1>
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
-            <label htmlFor="email">Your Email</label>
+            <label htmlFor="email">{t.your_email}</label>
             <input type="email" id="email" required ref={emailInputRef} />
           </div>
           <div className={classes.control}>
-            <label htmlFor="password">Your Password</label>
+            <label htmlFor="password">{t.your_pass}</label>
             <input
               type="password"
               id="password"
@@ -81,18 +83,16 @@ const LoginPage = () => {
             />
           </div>
           <div className={classes.actions}>
-            {!isLoading && (
-              <button>{isLogin ? "Login" : "Create Account"}</button>
-            )}
+            {!isLoading && <button>{isLogin ? t.login : t.create_acc}</button>}
             {isLoading && (
-              <p className={classes.loadingParagraph}>Loading...</p>
+              <p className={classes.loadingParagraph}>{t.loading}</p>
             )}
             <button
               type="button"
               className={classes.toggle}
               onClick={switchAuthModeHandler}
             >
-              {isLogin ? "Create new account" : "Login with existing account"}
+              {isLogin ? t.create_new_acc : t.login_existing_acc}
             </button>
           </div>
         </form>
