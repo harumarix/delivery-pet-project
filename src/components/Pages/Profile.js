@@ -9,6 +9,7 @@ const Profile = () => {
   const logoutHandler = () => {
     dispatch(authActions.logout());
     navigate("/login");
+    console.log(1);
   };
   return (
     <section className={`sectionContent ${classes.profile}`}>
