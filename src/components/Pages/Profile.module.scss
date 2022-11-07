@@ -60,6 +60,10 @@
   border-color: #641e03;
 }
 
-.statusMessage {
+.statusMessageSuccess {
   color: #fff;
+}
+
+.statusMessageError {
+  color: red;
 }

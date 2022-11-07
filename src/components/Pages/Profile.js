@@ -63,7 +63,7 @@ const Profile = () => {
     return (
       <section className={`sectionContent ${classes.profile}`}>
         <form onSubmit={submitHandler} className={classes.form}>
-          <p className={classes.statusMessage}>Successfully changed!</p>
+          <p className={classes.statusMessageSuccess}>Successfully changed!</p>
         </form>
       </section>
     );
@@ -73,7 +73,9 @@ const Profile = () => {
     return (
       <section className={`sectionContent ${classes.profile}`}>
         <form onSubmit={submitHandler} className={classes.form}>
-          <p className={classes.statusMessage}>Error: {status.errorMessage}</p>
+          <p className={classes.statusMessageError}>
+            Error: {status.errorMessage}
+          </p>
         </form>
       </section>
     );

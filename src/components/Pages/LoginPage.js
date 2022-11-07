@@ -73,7 +73,9 @@ const LoginPage = () => {
       <div className={classes.auth}>
         <h1>{isLogin ? t.login : t.sign_up}</h1>
         {status.status === "error" && (
-          <p className={classes.statusMessage}>Error: {status.errorMessage}</p>
+          <p className={classes.statusMessageError}>
+            Error: {status.errorMessage}
+          </p>
         )}
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
