@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 
 import classes from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const t = useSelector((state) => state.i18n.selectedTranslation);
-
+  const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const LoginPage = () => {
       .then((data) => {
         console.log(data);
         dispatch(authActions.login(data.idToken));
+        navigate("/profile");
       })
       .catch((error) => {
         alert(error.message);
