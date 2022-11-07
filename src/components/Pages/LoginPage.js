@@ -19,6 +19,7 @@ const LoginPage = () => {
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState({ status: null, errorMessage: "" });
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -59,10 +60,11 @@ const LoginPage = () => {
       .then((data) => {
         console.log(data);
         dispatch(authActions.login(data.idToken));
-        navigate("/profile");
+        setStatus({ status: "success" });
+        navigate("/", { replace: true });
       })
       .catch((error) => {
-        alert(error.message);
+        setStatus({ status: "error", errorMessage: error.message });
       });
   };
 
@@ -70,6 +72,9 @@ const LoginPage = () => {
     <section className={`sectionContent ${classes.login}`}>
       <div className={classes.auth}>
         <h1>{isLogin ? t.login : t.sign_up}</h1>
+        {status.status === "error" && (
+          <p className={classes.statusMessage}>Error: {status.errorMessage}</p>
+        )}
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
             <label htmlFor="email">{t.your_email}</label>

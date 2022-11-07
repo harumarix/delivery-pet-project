@@ -18,7 +18,7 @@ const Profile = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   const submitHandler = (event) => {
