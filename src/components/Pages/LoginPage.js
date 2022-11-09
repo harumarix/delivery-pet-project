@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setTokenExpiration } from "../../store/auth-actions";
 import { authActions } from "../../store/auth-slice";
 
 import classes from "./LoginPage.module.scss";
@@ -60,6 +61,7 @@ const LoginPage = () => {
       .then((data) => {
         console.log(data);
         dispatch(authActions.login(data.idToken));
+        dispatch(setTokenExpiration(data.expiresIn * 1000));
         setStatus({ status: "success" });
         navigate("/", { replace: true });
       })

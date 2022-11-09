@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setTokenExpiration } from "../../store/auth-actions";
 import { authActions } from "../../store/auth-slice";
 import classes from "./Profile.module.scss";
 
@@ -18,6 +19,7 @@ const Profile = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
+    dispatch(setTokenExpiration());
     navigate("/login", { replace: true });
   };
 
