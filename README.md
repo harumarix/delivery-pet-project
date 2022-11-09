@@ -1,3 +1,3 @@
 # delivery-v3
 
-React with the Redux toolkit state manager; React Routing; Redux-Thunk.
+React webpack SPA: Redux toolkit, React Routing, authentication
