@@ -17,9 +17,6 @@ const OrderDetail = () => {
 
   return (
     <section className={`sectionContent ${classes.orderDetails}`}>
-      {/* <button onClick={goBackHandler} className={classes.backButton}>
-        {t.back_button}
-      </button> */}
       <BackButton />
       <Card>
         <div className={classes.orderDetailWrap}>

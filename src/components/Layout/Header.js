@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = (props) => {
   const lang = useSelector((state) => state.i18n.lang);
   const t = useSelector((state) => state.i18n.selectedTranslation);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const refBurger = useRef(null);
@@ -24,9 +25,9 @@ const Header = (props) => {
     setBurgerClicked(!burgerClicked);
   };
 
-  const burgerClickedAndNavigateHandler = () => {
+  const burgerClickedAndNavigateHandler = (endpoint) => {
     setBurgerClicked(!burgerClicked);
-    navigate("/orders");
+    navigate(endpoint);
   };
 
   const changeBurgerLanguageHandler = (event) => {
@@ -86,7 +87,7 @@ const Header = (props) => {
           {t.cart_button}
         </li>
         <li
-          onClick={burgerClickedAndNavigateHandler}
+          onClick={burgerClickedAndNavigateHandler.bind(null, "/orders")}
           className={classes.burgerItem}
         >
           {t.order_history}
@@ -97,6 +98,23 @@ const Header = (props) => {
         >
           {languageButton}
         </li>
+
+        {isLoggedIn && (
+          <li
+            onClick={burgerClickedAndNavigateHandler.bind(null, "/profile")}
+            className={classes.burgerItem}
+          >
+            {t.profile}
+          </li>
+        )}
+        {!isLoggedIn && (
+          <li
+            onClick={burgerClickedAndNavigateHandler.bind(null, "/login")}
+            className={classes.burgerItem}
+          >
+            {t.login}
+          </li>
+        )}
       </ul>
     </div>
   );
@@ -109,9 +127,16 @@ const Header = (props) => {
         </Link>
         {burgerContent}
         <div className={classes.wrapper}>
-          <Link to="/login" className={classes.page}>
-            Login
-          </Link>
+          {!isLoggedIn && (
+            <Link to="/login" className={classes.page}>
+              {t.login}
+            </Link>
+          )}
+          {isLoggedIn && (
+            <Link to="/profile" className={classes.page}>
+              {t.profile}
+            </Link>
+          )}
           <Link to="/orders" className={classes.page}>
             {t.order_history}
           </Link>

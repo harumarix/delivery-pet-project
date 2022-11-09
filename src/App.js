@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendCartData, fetchCartData } from "./store/cart-actions";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Layout/Header";
 import Meals from "./components/Pages/Meals";
@@ -11,6 +11,7 @@ import Orders from "./components/Pages/Orders";
 import OrderDetail from "./components/Pages/OrderDetail";
 import LoginPage from "./components/Pages/LoginPage";
 import { cartActions } from "./store/cart-slice";
+import Profile from "./components/Pages/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
   const cart = useSelector((state) => state.cart);
   const { totalAmount } = cart;
-  const status = useSelector((state) => state.cart.status);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const showCartHandler = () => {
     setCartIsShown(true);
@@ -63,6 +64,8 @@ function App() {
       <Routes>
         <Route path="/orders/:orderId" element={<OrderDetail />} />
         <Route path="/orders" element={<Orders />} />
+        {isLoggedIn && <Route path="/profile" element={<Profile />} />}
+        {!isLoggedIn && <Route path="/login" element={<LoginPage />} />}
         <Route
           path="/"
           element={
@@ -71,7 +74,7 @@ function App() {
             </main>
           }
         />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showNotification}
     </React.Fragment>
